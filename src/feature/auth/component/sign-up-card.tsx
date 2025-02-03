@@ -4,7 +4,13 @@ import { FcGoogle } from "react-icons/fc";
 import { z } from "zod";
 import { DotedSeperator } from "@/components/doted-seperator";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -21,13 +27,15 @@ import Link from "next/link";
 
 const loginSchema = z.object({
   email: z.string().trim().email(),
+  name: z.string().trim().min(1, "Name is required"),
   password: z.string().min(1, "Password is required"),
 });
 
-export const SignInCard = () => {
+export const SignUpCard = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
@@ -51,8 +59,18 @@ export const SignInCard = () => {
 
       <div className="flex items-center justify-center bg-bl">
         <Card className="w-full h-full md:w-[487px] border-none shadow-none flex flex-col justify-center ">
-          <CardHeader className="flex   text-left p-7">
-            <CardTitle className="text-4xl ">Welcome back!</CardTitle>
+          <CardHeader className="flex text-left p-7">
+            <CardTitle className="text-4xl ">Sign Up</CardTitle>
+            <CardDescription>
+              By signing up, you agree to our{" "}
+              <Link href={"/privacy"} className="text-blue-700">
+                Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link href={"/terms"} className="text-blue-700">
+                Terms of Service
+              </Link>
+            </CardDescription>
           </CardHeader>
           <div className="px-7 ">
             <DotedSeperator />
@@ -60,11 +78,27 @@ export const SignInCard = () => {
 
           <CardContent className="p-7">
             <Form {...form}>
-              {" "}
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-4"
               >
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          {...field}
+                          placeholder="Enter your name"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
                 <FormField
                   control={form.control}
                   name="email"
@@ -73,15 +107,14 @@ export const SignInCard = () => {
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="Enter email address"
                           {...field}
+                          placeholder="Enter email address"
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="password"
@@ -90,17 +123,16 @@ export const SignInCard = () => {
                       <FormControl>
                         <Input
                           type="password"
-                          placeholder="Enter password"
                           {...field}
+                          placeholder="Enter password"
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <Button disabled={false} size={"lg"} className="w-full">
-                  Login
+                  Sign Up
                 </Button>
               </form>
             </Form>
@@ -116,7 +148,7 @@ export const SignInCard = () => {
               disabled={false}
             >
               <FcGoogle className="mr-2 size-5" />
-              Login with Google
+              Sign up with Google
             </Button>
             {/* <Button
               variant={"secondary"}
@@ -125,7 +157,7 @@ export const SignInCard = () => {
               disabled={false}
             >
               <FaGithub className="mr-2 size-5" />
-              Login with Github
+              Sign up with Github
             </Button> */}
           </CardContent>
           <div className="px-7">
@@ -134,9 +166,9 @@ export const SignInCard = () => {
 
           <CardContent className="p-7 flex items-center justify-center">
             <p>
-              Don&apos;t have an account?{" "}
-              <Link href={"/sign-up"}>
-                <span className="text-blue-700"> &nbsp;Sign Up</span>
+              Already have an account?{" "}
+              <Link href={"/sign-in"}>
+                <span className="text-blue-700"> &nbsp;Login</span>
               </Link>
             </p>
           </CardContent>
