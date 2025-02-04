@@ -41,7 +41,7 @@ export const Navbar = () => {
         </Link>
 
         <Link href="/sign-in">
-          <Button className="bg-black hover:bg-gray-700 text-white font-semibold py-2 px-4 ml-10 rounded-lg transition duration-300">
+          <Button className=" font-semibold py-2 px-4 ml-10 rounded-lg transition duration-300">
             Sign In
           </Button>
         </Link>
