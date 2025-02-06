@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/feature/site/component/navbar";
 import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
+import { AppleCardsCarouselDemo } from "@/feature/site/component/image-section";
 
 export const metadata: Metadata = {
   title: "Athlevo",
@@ -10,10 +12,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-gray-950">
       <div className="relative w-full h-[calc(100vh)]">
         <div className="absolute inset-0">
-          {/* Background Image with Gradient Overlay */}
           <Image
             src="/background.jpg"
             alt="Athlevo"
@@ -50,7 +51,11 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className=" w-full h-[calc(100vh)] bg-gray-950"></div>
+      <div className=" w-full  bg-gray-950">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-8">
+          <AppleCardsCarouselDemo />
+        </div>
+      </div>
     </div>
   );
 }

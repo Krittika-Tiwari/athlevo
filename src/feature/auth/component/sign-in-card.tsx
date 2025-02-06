@@ -1,6 +1,5 @@
 "use client";
 import { FcGoogle } from "react-icons/fc";
-// import { FaGithub } from "react-icons/fa";
 import { z } from "zod";
 import { DotedSeperator } from "@/components/doted-seperator";
 import { Button } from "@/components/ui/button";
@@ -18,6 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.string().trim().email(),
@@ -25,6 +25,7 @@ const loginSchema = z.object({
 });
 
 export const SignInCard = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -39,14 +40,26 @@ export const SignInCard = () => {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-2 h-screen ">
-      <div className=" text-black  ">
+      <div className="relative text-black">
         <Image
           src="/fitness4.jpeg"
           alt="Picture of the author"
           width={500}
           height={500}
-          className="w-full h-screen p-4 "
+          className="w-full h-screen p-4"
         />
+
+        <Button
+          onClick={() => router.push("/")}
+          className="absolute top-8 left-8 text-white rounded-full px-6 flex items-center gap-2 justify-center transition-all duration-500 ease-in-out border border-gray-700 bg-gradient-to-b from-gray-800 to-gray-950 shadow-[0_4px_10px_rgba(0,0,0,0.7)] hover:shadow-[0_6px_14px_rgba(0,0,0,0.9)] hover:scale-105 active:scale-95 active:shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
+          style={{
+            boxShadow:
+              "inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 6px 10px rgba(0, 0, 0, 0.8)",
+            backdropFilter: "blur(8px)",
+          }}
+        >
+          Athlevo
+        </Button>
       </div>
 
       <div className="flex items-center justify-center bg-bl">
@@ -118,15 +131,6 @@ export const SignInCard = () => {
               <FcGoogle className="mr-2 size-5" />
               Login with Google
             </Button>
-            {/* <Button
-              variant={"secondary"}
-              size={"lg"}
-              className="w-full"
-              disabled={false}
-            >
-              <FaGithub className="mr-2 size-5" />
-              Login with Github
-            </Button> */}
           </CardContent>
           <div className="px-7">
             <DotedSeperator />
