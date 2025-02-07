@@ -70,10 +70,10 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-[85%] mt-32">
             <div className="w-full p-6 bg-gray-900/40 text-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out">
               <Image
-                src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3ltJTIwd29ya291dHxlbnwwfHwwfHx8MA%3D%3D"
+                src="/strengthtraining.jpg"
                 alt="Fitness Program"
-                width={40}
-                height={40}
+                width={300}
+                height={200}
                 className="w-full h-40 object-cover rounded-lg mb-4"
               />
               <h3 className="text-xl font-semibold text-center mb-2">
@@ -97,8 +97,8 @@ export default function Home() {
               <Image
                 src="/yoga.jpg"
                 alt="Fitness Program"
-                width={40}
-                height={40}
+                width={300}
+                height={200}
                 quality={100}
                 className="w-full h-40 object-cover rounded-lg mb-4"
               />
@@ -123,8 +123,8 @@ export default function Home() {
               <Image
                 src="/cardio.jpg"
                 alt="Fitness Program"
-                width={40}
-                height={40}
+                width={300}
+                height={200}
                 className="w-full h-40 object-cover rounded-lg mb-4"
               />
               <h3 className="text-xl font-semibold text-center mb-2">
@@ -148,8 +148,8 @@ export default function Home() {
               <Image
                 src="/HIIT.webp"
                 alt="Fitness Program"
-                width={40}
-                height={40}
+                width={300}
+                height={200}
                 className="w-full h-40 object-cover rounded-lg mb-4"
               />
               <h3 className="text-xl font-semibold text-center mb-2">
