@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { AppleCardsCarouselDemo } from "@/feature/site/component/image-section";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Athlevo",
@@ -45,9 +46,11 @@ export default function Home() {
             <Button className="p-4 bg-red-800 rounded-full hover:bg-red-600 ">
               Get Started
             </Button>
-            <Button className="p-4 border-red-800 border-2 bg-transparent rounded-full">
-              Dashboard
-            </Button>
+            <Link href="/1">
+              <Button className="p-4 border-red-800 border-2 bg-transparent rounded-full">
+                Dashboard
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
